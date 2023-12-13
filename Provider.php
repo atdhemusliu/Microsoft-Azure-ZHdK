@@ -14,7 +14,7 @@ class Provider extends AbstractProvider
      *
      * @var string
      */
-    protected $graphUrl = 'https://graph.microsoft.com/v1.0/me';
+    protected $graphUrl = 'https://graph.microsoft.com/v1.0/me?$select=id,displayName,mail,userPrincipalName,onPremisesExtensionAttributes';
 
     /**
      * {@inheritdoc}
@@ -96,6 +96,7 @@ class Provider extends AbstractProvider
             'email'         => $user['userPrincipalName'],
             'principalName' => $user['userPrincipalName'],
             'mail'          => $user['mail'],
+            'eventoId'      => $user['onPremisesExtensionAttributes']['extensionAttribute12'],
             'avatar'        => null,
         ]);
     }
